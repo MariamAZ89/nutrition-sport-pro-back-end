@@ -1,0 +1,65 @@
+﻿@NutriSportPro.API_HostAddress = https://localhost:7082
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhZG1pbkBOdXRyaVNwb3J0UHJvLmNvbSIsImp0aSI6IjJlMWU0MTY4LTIyNWYtNDYwOS05YTA0LWQzZDkyMGU1MjFmZSIsImVtYWlsIjoiYWRtaW5ATnV0cmlTcG9ydFByby5jb20iLCJ1aWQiOiJkZGI0ZGU2ZC05NGY2LTQ5MDAtYTViNS0wZjFjYjI1MzBmMzEiLCJyb2xlcyI6WyJDb2FjaCIsIkFkbWluaXN0cmF0b3IiXSwiZXhwIjoxNzQ2MDY2MjYzLCJpc3MiOiJOdXRyaVNwb3J0UHJvQVBJIiwiYXVkIjoiTnV0cmlTcG9ydFByb0FwaVVzZXIifQ.bJICF9wJU5uvRFwQ_VYa5fgbwD_UrnxuhgZZyLq3hIU
+GET {{NutriSportPro.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
+
+POST {{NutriSportPro.API_HostAddress}}/api/auth/login
+Content-Type: application/json
+
+{
+  "Email":"admin@NutriSportPro.com",
+  "Password":"Admin@123"
+}
+
+###
+
+@id=1
+PUT {{NutriSportPro.API_HostAddress}}/api/training/{{id}}
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+    "Date": "2023-10-01T00:00:00Z",
+    "Duration": 70,
+    "Notes": "Morning run",
+    "Id": 1
+}
+
+###
+
+GET {{NutriSportPro.API_HostAddress}}/api/training/{{id}}
+Authorization: Bearer {{token}}
+###
+
+DELETE {{NutriSportPro.API_HostAddress}}/api/training/{{id}}
+Authorization: Bearer {{token}}
+
+
+###
+
+POST {{NutriSportPro.API_HostAddress}}/api/training
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+    "Date": "2023-10-01T00:00:00Z",
+    "Duration": 60,
+    "Notes": "Morning run"
+}
+
+###
+
+GET {{NutriSportPro.API_HostAddress}}/api/training
+Authorization: Bearer {{token}}
+// return data 
+{
+  "duration": 60,
+  "notes": "Morning run",
+  "date": "2023-10-01T00:00:00Z",
+  "id": 2,
+  "createdAt": "2025-04-30T19:26:57.3176083Z",
+  "updatedAt": null,
+}
+###

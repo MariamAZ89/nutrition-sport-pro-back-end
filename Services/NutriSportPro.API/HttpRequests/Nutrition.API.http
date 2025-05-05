@@ -1,0 +1,62 @@
+@NutriSportPro.API_HostAddress = https://localhost:7082
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhZG1pbkBOdXRyaVNwb3J0UHJvLmNvbSIsImp0aSI6ImU0NWRiNjk1LWM2MDktNDc4My05MWVhLWZkMzM5NGYxMzlhZiIsImVtYWlsIjoiYWRtaW5ATnV0cmlTcG9ydFByby5jb20iLCJ1aWQiOiJkZGI0ZGU2ZC05NGY2LTQ5MDAtYTViNS0wZjFjYjI1MzBmMzEiLCJyb2xlcyI6WyJDb2FjaCIsIkFkbWluaXN0cmF0b3IiXSwiZXhwIjoxNzQ2NTA3OTE4LCJpc3MiOiJOdXRyaVNwb3J0UHJvQVBJIiwiYXVkIjoiTnV0cmlTcG9ydFByb0FwaVVzZXIifQ.yrFeuNQabEvRwmW1IGw9Z0CdV8LVskhE43wJb_XLhaQ
+GET {{NutriSportPro.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
+
+POST {{NutriSportPro.API_HostAddress}}/api/auth/login
+Content-Type: application/json
+
+{
+  "Email":"admin@NutriSportPro.com",
+  "Password":"Admin@123"
+}
+
+###
+
+GET {{NutriSportPro.API_HostAddress}}/api/nutrition
+Authorization: Bearer {{token}}
+###
+
+POST {{NutriSportPro.API_HostAddress}}/api/nutrition
+Authorization: Bearer {{token}}
+Content-Type: application/json
+{
+  "Calories": 2500,
+  "Protein": 200,
+  "Carbohydrates": 300,
+  "Lipids":30,
+  "Food":"Test Food",
+  "Notes":"NAN",
+  "Date": "2025-02-01T14:30:45"
+}
+
+###
+
+@id=6
+PUT {{NutriSportPro.API_HostAddress}}/api/nutrition/{{id}}
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "Calories": 2500,
+  "Protein": 200,
+  "Carbohydrates": 300,
+  "Lipids":30,
+  "Food":"Test Food 1",
+  "Notes":"NAN",
+  "Date": "2025-02-01T14:30:45"
+}
+
+###
+
+GET {{NutriSportPro.API_HostAddress}}/api/nutrition/{{id}}
+Authorization: Bearer {{token}}
+
+###
+
+DELETE {{NutriSportPro.API_HostAddress}}/api/nutrition/{{id}}
+Authorization: Bearer {{token}}
+
+###

@@ -1,0 +1,74 @@
+﻿@NutriSportPro.API_HostAddress = https://localhost:7082
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhZG1pbkBOdXRyaVNwb3J0UHJvLmNvbSIsImp0aSI6IjJlMWU0MTY4LTIyNWYtNDYwOS05YTA0LWQzZDkyMGU1MjFmZSIsImVtYWlsIjoiYWRtaW5ATnV0cmlTcG9ydFByby5jb20iLCJ1aWQiOiJkZGI0ZGU2ZC05NGY2LTQ5MDAtYTViNS0wZjFjYjI1MzBmMzEiLCJyb2xlcyI6WyJDb2FjaCIsIkFkbWluaXN0cmF0b3IiXSwiZXhwIjoxNzQ2MDY2MjYzLCJpc3MiOiJOdXRyaVNwb3J0UHJvQVBJIiwiYXVkIjoiTnV0cmlTcG9ydFByb0FwaVVzZXIifQ.bJICF9wJU5uvRFwQ_VYa5fgbwD_UrnxuhgZZyLq3hIU
+GET {{NutriSportPro.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
+
+POST {{NutriSportPro.API_HostAddress}}/api/auth/login
+Content-Type: application/json
+
+{
+  "Email":"admin@NutriSportPro.com",
+  "Password":"Admin@123"
+}
+
+###
+@id=3
+PUT {{NutriSportPro.API_HostAddress}}/api/trainingplan/{{id}}
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "Objective": "Build Muscle",
+  "Name": "Beginner Strength Training Plan",
+  "Level": 1, 
+  "DurationWeeks": 12,
+  "Id": 3
+}
+
+###
+
+GET {{NutriSportPro.API_HostAddress}}/api/trainingplan/{{id}}
+Authorization: Bearer {{token}}
+
+
+
+###
+
+DELETE {{NutriSportPro.API_HostAddress}}/api/trainingplan/{{id}}
+Authorization: Bearer {{token}}
+
+
+###
+
+GET {{NutriSportPro.API_HostAddress}}/api/trainingplan/getAll
+Authorization: Bearer {{token}}
+
+return Data Is Array of  :
+Example
+{
+    "objective": "Build Muscle",
+    "name": "Beginner Strength Training Plan",
+    "level": 1,
+    "durationWeeks": 12,
+    "id": 1,
+    "createdAt": "2025-04-28T19:15:52.2267467",
+    "updatedAt": null
+  }
+
+###
+
+POST {{NutriSportPro.API_HostAddress}}/api/trainingplan/Add
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "Objective": "Build Muscle",
+  "Name": "Beginner Strength Training Plan",
+  "Level": 1, // must be None = 0,Beginner = 1, Intermediate = 2, Advanced = 3
+  "DurationWeeks": 12
+}
+
+###
+    
