@@ -1,127 +1,145 @@
+# 🏋️‍♂️ NutriSportPro – Backend API
 
-# 🏋️‍♂️ Application NutriSportPro
+**NutriSportPro** is a full-featured platform for sports coaching and nutrition tracking. It empowers users to monitor their training, nutrition, and body evolution while benefiting from personalized guidance to reach their fitness goals.
 
-## 📌 Decsription
+---
 
-The Sports Coaching and Nutrition application is a platform that allows users to track their training sessions and diet while receiving personalised advice. The aim is to help users achieve their fitness goals through detailed monitoring and tailored recommendations.
+## 📌 Description
+
+The backend API is built with **ASP.NET Core 9** and provides all core functionalities for the platform including authentication, training data management, nutritional planning, and integration with third-party services.
+
+👉 **Frontend repository**: [Nutrition Sport Pro – Frontend](https://github.com/MariamAZ89/nutrition-sport-pro-front-end/)
+
+---
 
 ## 🚀 Features
 
-### **V1 - Basic functions**
+### ✅ **V1 – Basic Features**
 
-✅ User registration and login (JWT Auth)
+- Authentication (JWT-based)
+- Creation of sports profile (age, weight, goals, etc.)
+- Workout tracking (exercises, reps, sets, duration, etc.)
+- Basic nutrition recommendations
 
-✅ Create a sports profile (age, weight, goals, etc.)
+### ✅ **V2 – Advanced Features**
 
-✅ Tracking training (exercises, repetitions, weight, duration, etc.)
+- Personalized training plans based on user goals
+- Nutrition tracking (calories, macros)
+- Statistics and progress visualization
 
-✅ Basic dietary recommendations
+### ✅ **V3 – Premium (Gold) Features**
 
-### **V2 - Advanced functionalities**
-
-✅ Personalised training plans based on objectives
-
-✅ Calorie and macro tracking via a nutritional database
-
-✅ Statistics on changes in performance and body composition
-
-### **V3 - Premium features (Gold)**
-
-✅ Real-time chat with certified coaches
-
-✅ Automatic generation of suitable food programmes
-
-✅ Integration with connected watches (Fitbit API / Google Fit , AI)
+- Real-time chat with certified coaches
+- AI-based meal plan generation
+- Integration with smartwatches (Fitbit API, Google Fit, etc.)
 
 ---
 
-## 🛠️ technologies used 
+## 🧠 Architecture
 
-- **Back End** : ASP.NET Core Web API / Minimal API
-- **Fron End** : React JS / ASP.NET Core MVC
-- **Database** : PostgresSQL / SQL Server / MySQL
-- **Auth** : JWT / OAuth (Google , Facebook)
-- **Storage**: Azure Blob Storage / Firebase
-- **API integrations** : OpenFoodFacts API (nutritional follow-up), Google Fit API (activity monitoring)
+![Architecture diagram](https://github.com/user-attachments/assets/ecea9934-0a71-4244-a60b-e0945cfdc92f)
 
 ---
 
-## 🎯 Installation and Configuration
+## 🛠️ Technologies Used
 
-### **Prerequisites**
-
-- .NET 9 SDK
-- Node.js (22+)
-- PostgreSQL
-- Firebase account (optional for file storage)
-
-### **Installation steps**
-
-1. **Clone the project**
-   ```sh
-   git clone http://github.com/[My-repo]/coaching-app.git
-   cd coaching-app
-   ```
-2. **Backend**
-   - Go to the folder `backend/`
-   - Installing dependencies :
-   ```sh
-   dotnet restore
-   ```
-   - Modification of the connection string (database: default) `appsetting.json`
-   - Launch API
-   ```sh
-   dotnet run
-   ```
-3. **Fronend**
-   - Go to the folder `fronend/`
-   - Installing dependencies :
-   ```sh
-   npm install
-   ```
-   - Modification of the API URL (backend : `coachingApi`) `.env`
-   - Launch the application
-   ```sh
-   npm run dev
-   ```
+- **Backend**: ASP.NET Core Web API (.NET 9)
+- **Frontend**: React JS (Vite, TypeScript, Tailwind CSS, ShadCN UI)
+- **Database**: SQL Server
+- **Authentication**: JWT
 
 ---
 
-## 📂 Project structure
+## ⚙️ Getting Started
 
+### 🔧 Prerequisites
+
+- [.NET 9 SDK](https://dotnet.microsoft.com/en-us/download)
+- [Node.js 22+](https://nodejs.org/)
+- [SQL Server](https://www.microsoft.com/fr-fr/sql-server/sql-server-downloads)
+
+### 📦 Installation
+
+1. **Clone the repository**
+
+```bash
+git clone https://github.com/MariamAZ89/NutriSportPro.git
+cd NutriSportPro
 ```
-coaching-app/
-|──backend/
-   |── Controllers/
-   |── Models/
-   |── Services/
-   |── Data/
-   |── Program.cs
-|──frontend/
-   |── components/
-   |── pages/
-   |── styles/
-   |── App.js
-|──docs/
-   |── Api_Documentation.md
-|── README.md
+
+2. **Restore and run the API**
+
+```bash
+dotnet restore
+dotnet run
+```
+
+3. **Configure database connection**
+
+Edit the `appsettings.json` file and replace the default connection string with your own:
+
+```json
+"ConnectionStrings": {
+  "DefaultConnection": "Server=YOUR_SERVER;Database=NutriSportProDb;Trusted_Connection=True;"
+}
 ```
 
 ---
 
-## ✅ Best practice
+## 🗂️ Project Structure
 
-- **Clean, well-structured code 🛠️**
-- **API documentation with Postman 📖**
-- **CI/CD for automatic deployment 🚀**
+```
+src/
+└── NutriSportPro.API/
+    ├── Configuration/        # EF Core entity configurations (e.g., ApplicationUserConfiguration)
+    ├── Controllers/          # API controllers exposing endpoints for each domain
+    ├── Data/                 # Database context and data seeding
+    ├── Dtos/                 # Data Transfer Objects used for data transport between layers
+    ├── Enums/                # Enumerations representing fixed sets of constants
+    ├── Helpers/              # Utility classes and shared helper logic
+    ├── HttpRequests/         # .http files to test API endpoints manually (via IDE support)
+    ├── Migrations/           # EF Core database schema migrations
+    ├── Models/               # Core domain models/entities representing business data
+    ├── Requests/             # Custom request models (e.g., forms, filters)
+    ├── Responses/            # Standardized API response models
+    ├── Ressources/           # Infrastructure components: JWT config, global exception handling, middleware
+    ├── Services/             # Application services handling business logic
+    ├── _globalUsings.cs      # Global using directives for simplified file-level imports
+    ├── AppContainer.cs       # Dependency injection and service registration
+    ├── appsettings.json      # Configuration file (DB connection string, JWT settings, etc.)
+    └── Program.cs            # Main application entry point
+```
+
+---
+
+## 🧪 API Testing
+
+- Includes `.http` files for easy API testing via tools like [REST Client for VSCode](https://marketplace.visualstudio.com/items?itemName=humao.rest-client).
+
+---
+
+## ✅ Best Practices
+
+- Clean architecture with service layers
+- Separation of concerns
+- Secure authentication with JWT
+- API versioning and modular structure
+
+---
+
+## 🔗 Related Repositories
+
+- 👉 [Frontend – React App](https://github.com/MariamAZ89/nutrition-sport-pro-front-end/)
 
 ---
 
 ## 📬 Contact
 
-📧 Email : `email`
+- 📧 Email: [azami.maria89@gmail.com](mailto:azami.maria89@gmail.com)
+- 🐱 GitHub: [MariamAZ89](https://github.com/MariamAZ89)
 
-🐱 GitHub : `Url`
+---
 
-🚀 **Ready to transform your fitness with our application?** 💪
+## 💪 Ready to transform your fitness journey?
 
+Start your personalized coaching experience with **NutriSportPro** today!
